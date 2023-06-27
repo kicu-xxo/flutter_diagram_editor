@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:diagram_editor/src/utils/link_style.dart';
 import 'package:diagram_editor/src/utils/vector_utils.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +28,16 @@ class LinkPainter extends CustomPainter {
     path.lineTo(linkPoints[1].dx, linkPoints[1].dy);
     path.lineTo(linkPoints[2].dx, linkPoints[2].dy);
     path.lineTo(linkPoints[3].dx, linkPoints[3].dy);
+
+    var radius = 10.0;
+    var roundAngle = pi / 2; // 90도
+
+    path.arcTo(
+      Rect.fromCircle(center: Offset(150, 150), radius: radius),
+      0,
+      roundAngle,
+      false,
+    );
 
     canvas.drawPath(path, paint);
 
