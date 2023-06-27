@@ -22,14 +22,12 @@ class LinkPainter extends CustomPainter {
 
     Path path = Path();
 
-    var radius = 10.0;
-
     path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
 
-    path.quadraticBezierTo(linkPoints[1].dx, linkPoints[1].dy,
-        linkPoints[2].dx - 15, linkPoints[2].dy);
+    path.quadraticBezierTo(
+        linkPoints[1].dx, linkPoints[1].dy, linkPoints[2].dx, linkPoints[2].dy);
 
-    path.moveTo(linkPoints[1].dx - 15, linkPoints[1].dy);
+    path.moveTo(linkPoints[1].dx, linkPoints[1].dy);
 
     path.quadraticBezierTo(
         linkPoints[2].dx, linkPoints[2].dy, linkPoints[3].dx, linkPoints[3].dy);
