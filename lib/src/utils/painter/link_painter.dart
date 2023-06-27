@@ -31,7 +31,7 @@ class LinkPainter extends CustomPainter {
     // path.lineTo(linkPoints[2].dx, linkPoints[2].dy);
     path.quadraticBezierTo(
         linkPoints[2].dx, linkPoints[2].dy, linkPoints[3].dx, linkPoints[3].dy);
-    // path.lineTo(linkPoints[3].dx, linkPoints[3].dy);
+    path.lineTo(linkPoints[3].dx, linkPoints[3].dy);
 
     // var radius = 10.0;
     // var roundAngle = pi / 2; // 90도
