@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:diagram_editor/src/utils/link_style.dart';
 import 'package:diagram_editor/src/utils/vector_utils.dart';
 import 'package:flutter/material.dart';
@@ -29,12 +27,13 @@ class LinkPainter extends CustomPainter {
     path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
     path.lineTo(linkPoints[1].dx, linkPoints[1].dy);
 
-    var rect = Rect.fromPoints(linkPoints[1], linkPoints[2]);
-    path.arcTo(
-      rect,
-      pi * 1.5,
-      pi / 2,
-      false,
+    var controlPoint = Offset(linkPoints[1].dx, linkPoints[2].dy);
+    var endPoint = linkPoints[2];
+    path.quadraticBezierTo(
+      controlPoint.dx,
+      controlPoint.dy,
+      endPoint.dx,
+      endPoint.dy,
     );
 
     path.lineTo(linkPoints[3].dx, linkPoints[3].dy);
