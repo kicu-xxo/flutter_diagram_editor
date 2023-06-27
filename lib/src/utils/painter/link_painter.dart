@@ -33,7 +33,8 @@ class LinkPainter extends CustomPainter {
     var roundAngle = pi / 2; // 90도
 
     path.arcTo(
-      Rect.fromCircle(center: Offset(150, 150), radius: radius),
+      Rect.fromCircle(
+          center: Offset(linkPoints[1].dx, linkPoints[1].dy), radius: radius),
       0,
       roundAngle,
       false,
