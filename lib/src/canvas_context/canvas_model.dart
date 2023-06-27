@@ -212,20 +212,26 @@ class CanvasModel with ChangeNotifier {
 
     var targetComponentPoint = targetComponent.position +
         targetComponent.getPointOnComponent(targetLinkAlignment);
+    var isAlignVertically = Get.find<LinkAlignController>().isAlignVertically;
 
 // task들 수직 정렬이면 y / 2, 수평 정렬이면 x / 2
+    Offset midPoint1 = getComponentMiddlePoint1(
+        isAlignVertically, sourceComponentPoint, targetComponentPoint);
 
-    Offset midPoint1 = Get.find<LinkAlignController>().isAlignVertically
-        ? Offset(sourceComponentPoint.dx,
-            (sourceComponentPoint.dy + targetComponentPoint.dy) / 2)
-        : Offset((sourceComponentPoint.dx + targetComponentPoint.dx) / 2,
-            sourceComponentPoint.dy);
+    Offset midPoint2 = getComponentMiddlePoint2(
+        isAlignVertically, sourceComponentPoint, targetComponentPoint);
 
-    Offset midPoint2 = Get.find<LinkAlignController>().isAlignVertically
-        ? Offset(targetComponentPoint.dx,
-            (sourceComponentPoint.dy + targetComponentPoint.dy) / 2)
-        : Offset((sourceComponentPoint.dx + targetComponentPoint.dx) / 2,
-            targetComponentPoint.dy);
+    // Offset midPoint1 = Get.find<LinkAlignController>().isAlignVertically
+    //     ? Offset(sourceComponentPoint.dx,
+    //         (sourceComponentPoint.dy + targetComponentPoint.dy) / 2)
+    //     : Offset((sourceComponentPoint.dx + targetComponentPoint.dx) / 2,
+    //         sourceComponentPoint.dy);
+
+    // Offset midPoint2 = Get.find<LinkAlignController>().isAlignVertically
+    //     ? Offset(targetComponentPoint.dx,
+    //         (sourceComponentPoint.dy + targetComponentPoint.dy) / 2)
+    //     : Offset((sourceComponentPoint.dx + targetComponentPoint.dx) / 2,
+    //         targetComponentPoint.dy);
 
     // ------------------------------------------------------------------------
 
@@ -237,8 +243,8 @@ class CanvasModel with ChangeNotifier {
       linkPoints: [
         sourceComponentPoint,
         // 꺾인선
-        // midPoint1,
-        // midPoint2,
+        midPoint1,
+        midPoint2,
         targetComponentPoint,
       ],
       linkStyle: linkStyle == null ? LinkStyle() : linkStyle,
@@ -247,6 +253,26 @@ class CanvasModel with ChangeNotifier {
 
     notifyListeners();
     return linkId;
+  }
+
+// midPoint1의 값을 구하는 메서드
+  getComponentMiddlePoint1(bool isAlignVertically, Offset sourceComponentPoint,
+      Offset targetComponentPoint) {
+    return isAlignVertically
+        ? Offset(sourceComponentPoint.dx,
+            (sourceComponentPoint.dy + targetComponentPoint.dy) / 2)
+        : Offset((sourceComponentPoint.dx + targetComponentPoint.dx) / 2,
+            sourceComponentPoint.dy);
+  }
+
+//midPoint2의 값을 구하는 메서드
+  getComponentMiddlePoint2(bool isAlignVertically, Offset sourceComponentPoint,
+      Offset targetComponentPoint) {
+    return isAlignVertically
+        ? Offset(targetComponentPoint.dx,
+            (sourceComponentPoint.dy + targetComponentPoint.dy) / 2)
+        : Offset((sourceComponentPoint.dx + targetComponentPoint.dx) / 2,
+            targetComponentPoint.dy);
   }
 
   updateLinks(String componentId) {
