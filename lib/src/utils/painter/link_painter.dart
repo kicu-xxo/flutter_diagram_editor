@@ -29,18 +29,9 @@ class LinkPainter extends CustomPainter {
 
     path.lineTo(linkPoints[3].dx, linkPoints[3].dy);
 
-    // path.lineTo(linkPoints[3].dx, linkPoints[3].dy);
-
-    // var radius = 10.0;
-    // var roundAngle = pi / 2; // 90도
-
-    // path.arcTo(
-    //   Rect.fromCircle(
-    //       center: Offset(linkPoints[1].dx, linkPoints[1].dy), radius: radius),
-    //   0,
-    //   roundAngle,
-    //   false,
-    // );
+    for (int i = 4; i < linkPoints.length; i++) {
+      path.lineTo(linkPoints[i].dx, linkPoints[i].dy);
+    }
 
     canvas.drawPath(path, paint);
 
@@ -98,7 +89,7 @@ class LinkPainter extends CustomPainter {
     //     ),
     //     paint,
     //   );
-    // } else {
+    // else {
     //   // 중간 연결점들
 
     //   canvas.drawPath(
