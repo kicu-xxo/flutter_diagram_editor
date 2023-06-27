@@ -20,67 +20,77 @@ class LinkPainter extends CustomPainter {
       ..strokeWidth = linkStyle.lineWidth * scale
       ..style = PaintingStyle.stroke;
 
-    for (int i = 0; i < linkPoints.length - 1; i++) {
-      if (linkPoints.length == 2) {
-        // 처음, 끝점만 존재하는 직선
+    Path path = Path();
 
-        canvas.drawPath(
-          linkStyle.getLinePath(
-            VectorUtils.getShorterLineStart(
-              linkPoints[i],
-              linkPoints[i + 1],
-              scale * linkStyle.getEndShortening(linkStyle.backArrowType),
-            ),
-            VectorUtils.getShorterLineEnd(
-              linkPoints[i],
-              linkPoints[i + 1],
-              scale * linkStyle.getEndShortening(linkStyle.arrowType),
-            ),
-            scale,
-          ),
-          paint,
-        );
-      } else {
-        print("else");
-      }
-      // else if (i == 0) {
-      //   // 시작점
+    path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
+    path.lineTo(linkPoints[1].dx, linkPoints[1].dy);
+    path.lineTo(linkPoints[2].dx, linkPoints[2].dy);
+    path.lineTo(linkPoints[3].dx, linkPoints[3].dy);
 
-      //   canvas.drawPath(
-      //     linkStyle.getLinePath(
-      //       VectorUtils.getShorterLineStart(
-      //         linkPoints[i],
-      //         linkPoints[i + 1],
-      //         scale * linkStyle.getEndShortening(linkStyle.backArrowType),
-      //       ),
-      //       linkPoints[i + 1],
-      //       scale,
-      //     ),
-      //     paint,
-      //   );
-      // } else if (i == linkPoints.length - 2) {
-      //   // 끝점
+    canvas.drawPath(path, paint);
 
-      //   canvas.drawPath(
-      //     linkStyle.getLinePath(
-      //       linkPoints[i],
-      //       VectorUtils.getShorterLineEnd(
-      //         linkPoints[i],
-      //         linkPoints[i + 1],
-      //         scale * linkStyle.getEndShortening(linkStyle.arrowType),
-      //       ),
-      //       scale,
-      //     ),
-      //     paint,
-      //   );
-      // } else {
-      //   // 중간 연결점들
+    // for (int i = 0; i < linkPoints.length - 1; i++) {
+    //   if (linkPoints.length == 2) {
 
-      //   canvas.drawPath(
-      //       linkStyle.getLinePath(linkPoints[i], linkPoints[i + 1], scale),
-      //       paint);
-      // }
-    }
+    // 처음, 끝점만 존재하는 직선
+
+    //   canvas.drawPath(
+    //     linkStyle.getLinePath(
+    //       VectorUtils.getShorterLineStart(
+    //         linkPoints[i],
+    //         linkPoints[i + 1],
+    //         scale * linkStyle.getEndShortening(linkStyle.backArrowType),
+    //       ),
+    //       VectorUtils.getShorterLineEnd(
+    //         linkPoints[i],
+    //         linkPoints[i + 1],
+    //         scale * linkStyle.getEndShortening(linkStyle.arrowType),
+    //       ),
+    //       scale,
+    //     ),
+    //     paint,
+    //   );
+    // } else {
+    //   print("else");
+    // }
+    // else if (i == 0) {
+    //   // 시작점
+
+    //   canvas.drawPath(
+    //     linkStyle.getLinePath(
+    //       VectorUtils.getShorterLineStart(
+    //         linkPoints[i],
+    //         linkPoints[i + 1],
+    //         scale * linkStyle.getEndShortening(linkStyle.backArrowType),
+    //       ),
+    //       linkPoints[i + 1],
+    //       scale,
+    //     ),
+    //     paint,
+    //   );
+    // } else if (i == linkPoints.length - 2) {
+    //   // 끝점
+
+    //   canvas.drawPath(
+    //     linkStyle.getLinePath(
+    //       linkPoints[i],
+    //       VectorUtils.getShorterLineEnd(
+    //         linkPoints[i],
+    //         linkPoints[i + 1],
+    //         scale * linkStyle.getEndShortening(linkStyle.arrowType),
+    //       ),
+    //       scale,
+    //     ),
+    //     paint,
+    //   );
+    // } else {
+    //   // 중간 연결점들
+
+    //   canvas.drawPath(
+    //       linkStyle.getLinePath(linkPoints[i], linkPoints[i + 1], scale),
+    //       paint);
+    // }
+    // }
 
     paint..style = PaintingStyle.fill;
     canvas.drawPath(
