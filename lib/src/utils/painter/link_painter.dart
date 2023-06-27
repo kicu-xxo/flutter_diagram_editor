@@ -26,16 +26,9 @@ class LinkPainter extends CustomPainter {
 
     path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
     path.lineTo(linkPoints[1].dx, linkPoints[1].dy);
-
-    var controlPoint = Offset(linkPoints[1].dx, linkPoints[2].dy);
-    var endPoint = linkPoints[2];
-    path.quadraticBezierTo(
-      controlPoint.dx,
-      controlPoint.dy,
-      endPoint.dx,
-      endPoint.dy,
-    );
-
+    path.arcToPoint(Offset(linkPoints[1].dx - radius, linkPoints[3].dy),
+        radius: Radius.circular(radius));
+    path.lineTo(linkPoints[2].dx, linkPoints[2].dy);
     path.lineTo(linkPoints[3].dx, linkPoints[3].dy);
 
     // var radius = 10.0;
