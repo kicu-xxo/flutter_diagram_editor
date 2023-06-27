@@ -7,11 +7,11 @@ class CanvasStateWriter {
   /// Allows you to change the state of the canvas.
   CanvasStateWriter(this._canvasState);
 
-  /// Updates everything on canvas.
+  /// 캔버스의 모든 것을 업데이트합니다.
   ///
-  /// It should be used as little as possible, it demands a lot of performance.
-  /// Use only in case that something on canvas is not updated.
-  /// It calls [notifyListeners] function of [ChangeNotifier].
+  /// 가능한 한 적게 사용해야 하며 많은 성능이 필요합니다.
+  /// 캔버스의 무언가가 업데이트되지 않은 경우에만 사용하십시오.
+  /// [ChangeNotifier]의 [notifyListeners] 함수를 호출합니다.
   updateCanvas() {
     _canvasState.updateCanvas();
   }
