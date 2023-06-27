@@ -40,43 +40,46 @@ class LinkPainter extends CustomPainter {
           ),
           paint,
         );
-      } else if (i == 0) {
-        // 시작점
-
-        canvas.drawPath(
-          linkStyle.getLinePath(
-            VectorUtils.getShorterLineStart(
-              linkPoints[i],
-              linkPoints[i + 1],
-              scale * linkStyle.getEndShortening(linkStyle.backArrowType),
-            ),
-            linkPoints[i + 1],
-            scale,
-          ),
-          paint,
-        );
-      } else if (i == linkPoints.length - 2) {
-        // 끝점
-
-        canvas.drawPath(
-          linkStyle.getLinePath(
-            linkPoints[i],
-            VectorUtils.getShorterLineEnd(
-              linkPoints[i],
-              linkPoints[i + 1],
-              scale * linkStyle.getEndShortening(linkStyle.arrowType),
-            ),
-            scale,
-          ),
-          paint,
-        );
       } else {
-        // 중간 연결점들
-
-        canvas.drawPath(
-            linkStyle.getLinePath(linkPoints[i], linkPoints[i + 1], scale),
-            paint);
+        print("else");
       }
+      // else if (i == 0) {
+      //   // 시작점
+
+      //   canvas.drawPath(
+      //     linkStyle.getLinePath(
+      //       VectorUtils.getShorterLineStart(
+      //         linkPoints[i],
+      //         linkPoints[i + 1],
+      //         scale * linkStyle.getEndShortening(linkStyle.backArrowType),
+      //       ),
+      //       linkPoints[i + 1],
+      //       scale,
+      //     ),
+      //     paint,
+      //   );
+      // } else if (i == linkPoints.length - 2) {
+      //   // 끝점
+
+      //   canvas.drawPath(
+      //     linkStyle.getLinePath(
+      //       linkPoints[i],
+      //       VectorUtils.getShorterLineEnd(
+      //         linkPoints[i],
+      //         linkPoints[i + 1],
+      //         scale * linkStyle.getEndShortening(linkStyle.arrowType),
+      //       ),
+      //       scale,
+      //     ),
+      //     paint,
+      //   );
+      // } else {
+      //   // 중간 연결점들
+
+      //   canvas.drawPath(
+      //       linkStyle.getLinePath(linkPoints[i], linkPoints[i + 1], scale),
+      //       paint);
+      // }
     }
 
     paint..style = PaintingStyle.fill;

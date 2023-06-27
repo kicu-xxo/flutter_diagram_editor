@@ -170,8 +170,6 @@ class CanvasModel with ChangeNotifier {
 // 새롭게 구한 midPoint값 적용
     linkPoints[1] = midPoint1;
     linkPoints[2] = midPoint2;
-
-    notifyListeners();
   }
 
   /// Creates a link between components. Returns created link's id.
