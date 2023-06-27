@@ -22,21 +22,18 @@ class LinkPainter extends CustomPainter {
 
     Path path = Path();
 
-    var radius = 10.0;
+    var radius = Radius.circular(10.0);
 
-    path.moveTo(linkPoints[0].dx + radius, linkPoints[0].dy);
-    path.lineTo(linkPoints[1].dx - radius, linkPoints[1].dy);
+    path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
+    path.lineTo(linkPoints[1].dx, linkPoints[1].dy);
+
     path.arcToPoint(
       linkPoints[2],
-      radius: Radius.circular(radius),
+      radius: radius,
       clockwise: false,
     );
-    path.lineTo(linkPoints[3].dx, linkPoints[3].dy - radius);
-    path.arcToPoint(
-      linkPoints[0],
-      radius: Radius.circular(radius),
-      clockwise: false,
-    );
+
+    path.lineTo(linkPoints[3].dx, linkPoints[3].dy);
 
     // var radius = 10.0;
     // var roundAngle = pi / 2; // 90도
