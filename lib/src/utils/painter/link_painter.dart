@@ -43,11 +43,19 @@ class LinkPainter extends CustomPainter {
       );
     } else {
       path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
-      path.conicTo(linkPoints[1].dx, linkPoints[1].dy,
-          (linkPoints[1].dx + linkPoints[2].dx) / 2, linkPoints[2].dy, 1);
-      path.moveTo(linkPoints[1].dx, linkPoints[1].dy);
-      path.conicTo(linkPoints[2].dx, linkPoints[2].dy,
-          (linkPoints[2].dx + linkPoints[3].dx) / 2, linkPoints[3].dy, 1);
+
+      path.conicTo(
+          linkPoints[1].dx,
+          linkPoints[1].dy,
+          (linkPoints[0].dx + linkPoints[3].dx) / 2,
+          (linkPoints[0].dy + linkPoints[3].dy) / 2,
+          1);
+
+      path.moveTo((linkPoints[0].dx + linkPoints[3].dx) / 2,
+          (linkPoints[0].dy + linkPoints[3].dy) / 2);
+
+      path.conicTo(linkPoints[2].dx, linkPoints[2].dy, linkPoints[3].dx,
+          linkPoints[3].dy, 1);
 
       // for (int i = 1; i < linkPoints.length; i++) {
       //   path.lineTo(linkPoints[i].dx, linkPoints[i].dy);
