@@ -25,22 +25,26 @@ class LinkPainter extends CustomPainter {
 
     if (linkPoints.length == 2) {
       //     // 직선
-      canvas.drawPath(
-        linkStyle.getLinePath(
-          VectorUtils.getShorterLineStart(
-            linkPoints[0],
-            linkPoints[1],
-            scale * linkStyle.getEndShortening(linkStyle.backArrowType),
-          ),
-          VectorUtils.getShorterLineEnd(
-            linkPoints[0],
-            linkPoints[1],
-            scale * linkStyle.getEndShortening(linkStyle.arrowType),
-          ),
-          scale,
-        ),
-        paint,
-      );
+      // canvas.drawPath(
+      //   linkStyle.getLinePath(
+      //     VectorUtils.getShorterLineStart(
+      //       linkPoints[0],
+      //       linkPoints[1],
+      //       scale * linkStyle.getEndShortening(linkStyle.backArrowType),
+      //     ),
+      //     VectorUtils.getShorterLineEnd(
+      //       linkPoints[0],
+      //       linkPoints[1],
+      //       scale * linkStyle.getEndShortening(linkStyle.arrowType),
+      //     ),
+      //     scale,
+      //   ),
+      //   paint,
+      // );
+      path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
+      path.conicTo(linkPoints[0].dx, linkPoints[0].dy, linkPoints[1].dx,
+          linkPoints[1].dy, 2);
+      canvas.drawPath(path, paint);
     } else {
       path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
       path.conicTo(linkPoints[0].dx, linkPoints[0].dy, linkPoints[2].dx,
