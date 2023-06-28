@@ -21,8 +21,9 @@ class LinkPainter extends CustomPainter {
       ..style = PaintingStyle.stroke;
 
 // ---------------------------------- 곡선일뻔한 부분
-    // Path path = Path();
+    Path path = Path();
 
+// -------------- 반만 곡선--------------------
     // path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
 
     // path.quadraticBezierTo(
@@ -34,62 +35,73 @@ class LinkPainter extends CustomPainter {
     //   path.lineTo(linkPoints[i].dx, linkPoints[i].dy);
     // }
 
-    // canvas.drawPath(path, paint);
-
-    for (int i = 0; i < linkPoints.length - 1; i++) {
-      if (linkPoints.length == 2) {
-        // 직선
-        canvas.drawPath(
-          linkStyle.getLinePath(
-            VectorUtils.getShorterLineStart(
-              linkPoints[i],
-              linkPoints[i + 1],
-              scale * linkStyle.getEndShortening(linkStyle.backArrowType),
-            ),
-            VectorUtils.getShorterLineEnd(
-              linkPoints[i],
-              linkPoints[i + 1],
-              scale * linkStyle.getEndShortening(linkStyle.arrowType),
-            ),
-            scale,
-          ),
-          paint,
-        );
-      } else if (i == 0) {
-        // startpoint
-        canvas.drawPath(
-          linkStyle.getLinePath(
-            VectorUtils.getShorterLineStart(
-              linkPoints[i],
-              linkPoints[i + 1],
-              scale * linkStyle.getEndShortening(linkStyle.backArrowType),
-            ),
-            linkPoints[i + 1],
-            scale,
-          ),
-          paint,
-        );
-      } else if (i == linkPoints.length - 2) {
-        // endpoint
-        canvas.drawPath(
-          linkStyle.getLinePath(
-            linkPoints[i],
-            VectorUtils.getShorterLineEnd(
-              linkPoints[i],
-              linkPoints[i + 1],
-              scale * linkStyle.getEndShortening(linkStyle.arrowType),
-            ),
-            scale,
-          ),
-          paint,
-        );
-      } else {
-        // middle
-        canvas.drawPath(
-            linkStyle.getLinePath(linkPoints[i], linkPoints[i + 1], scale),
-            paint);
-      }
+    path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
+    for (int i = 0; i < linkPoints.length; i++) {
+      path.relativeCubicTo(
+          linkPoints[i].dx,
+          linkPoints[i].dy,
+          linkPoints[i + 1].dx,
+          linkPoints[i + 1].dy,
+          linkPoints[i + 2].dx,
+          linkPoints[i + 2].dy);
     }
+
+    canvas.drawPath(path, paint);
+
+    // for (int i = 0; i < linkPoints.length - 1; i++) {
+    //   if (linkPoints.length == 2) {
+    //     // 직선
+    //     canvas.drawPath(
+    //       linkStyle.getLinePath(
+    //         VectorUtils.getShorterLineStart(
+    //           linkPoints[i],
+    //           linkPoints[i + 1],
+    //           scale * linkStyle.getEndShortening(linkStyle.backArrowType),
+    //         ),
+    //         VectorUtils.getShorterLineEnd(
+    //           linkPoints[i],
+    //           linkPoints[i + 1],
+    //           scale * linkStyle.getEndShortening(linkStyle.arrowType),
+    //         ),
+    //         scale,
+    //       ),
+    //       paint,
+    //     );
+    //   } else if (i == 0) {
+    //     // startpoint
+    //     canvas.drawPath(
+    //       linkStyle.getLinePath(
+    //         VectorUtils.getShorterLineStart(
+    //           linkPoints[i],
+    //           linkPoints[i + 1],
+    //           scale * linkStyle.getEndShortening(linkStyle.backArrowType),
+    //         ),
+    //         linkPoints[i + 1],
+    //         scale,
+    //       ),
+    //       paint,
+    //     );
+    //   } else if (i == linkPoints.length - 2) {
+    //     // endpoint
+    //     canvas.drawPath(
+    //       linkStyle.getLinePath(
+    //         linkPoints[i],
+    //         VectorUtils.getShorterLineEnd(
+    //           linkPoints[i],
+    //           linkPoints[i + 1],
+    //           scale * linkStyle.getEndShortening(linkStyle.arrowType),
+    //         ),
+    //         scale,
+    //       ),
+    //       paint,
+    //     );
+    //   } else {
+    //     // middle
+    //     canvas.drawPath(
+    //         linkStyle.getLinePath(linkPoints[i], linkPoints[i + 1], scale),
+    //         paint);
+    //   }
+    // }
 
     paint..style = PaintingStyle.fill;
     canvas.drawPath(
