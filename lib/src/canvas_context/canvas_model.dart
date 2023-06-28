@@ -150,15 +150,6 @@ class CanvasModel with ChangeNotifier {
     // var xPosition = (sourcePoint.dx - targetPoint.dx).abs();
     // var yPosition = (sourcePoint.dy - targetPoint.dy).abs();
 
-// 연결된 task의 위, 아래 배치가 바뀌는 순간에만 x/2 적용 ( 안 그러면 오류 발생 )
-    // Offset midPoint1 = (75 < yPosition && yPosition < 85)
-    //     ? Offset((sourcePoint.dx + targetPoint.dx) / 2, sourcePoint.dy)
-    //     : Offset(sourcePoint.dx, (sourcePoint.dy + targetPoint.dy) / 2);
-
-    // Offset midPoint2 = (75 < yPosition && yPosition < 85)
-    //     ? Offset((sourcePoint.dx + targetPoint.dx) / 2, targetPoint.dy)
-    //     : Offset(targetPoint.dx, (sourcePoint.dy + targetPoint.dy) / 2);
-
     Offset midPoint1 = Get.find<LinkAlignController>().isAlignVertically
         ? Offset(sourcePoint.dx, (sourcePoint.dy + targetPoint.dy) / 2)
         : Offset((sourcePoint.dx + targetPoint.dx) / 2, sourcePoint.dy);
@@ -243,8 +234,8 @@ class CanvasModel with ChangeNotifier {
       linkPoints: [
         sourceComponentPoint,
         // 꺾인선
-        midPoint1,
-        midPoint2,
+        // midPoint1,
+        // midPoint2,
         targetComponentPoint,
       ],
       linkStyle: linkStyle == null ? LinkStyle() : linkStyle,
