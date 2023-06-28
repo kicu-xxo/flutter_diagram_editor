@@ -36,17 +36,24 @@ class LinkPainter extends CustomPainter {
     // }
 
     path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
-    for (int i = 0; i < linkPoints.length; i++) {
-      path.relativeCubicTo(
-          linkPoints[i].dx,
-          linkPoints[i].dy,
-          linkPoints[i + 1].dx,
-          linkPoints[i + 1].dy,
-          linkPoints[i + 2].dx,
-          linkPoints[i + 2].dy);
-      path.moveTo(linkPoints[i + 1].dx, linkPoints[i + 1].dy);
-    }
 
+    // for (int i = 0; i < linkPoints.length; i++) {
+    //   path.relativeCubicTo(
+    //       linkPoints[i].dx,
+    //       linkPoints[i].dy,
+    //       linkPoints[i + 1].dx,
+    //       linkPoints[i + 1].dy,
+    //       linkPoints[i + 2].dx,
+    //       linkPoints[i + 2].dy);
+    //   path.moveTo(linkPoints[i + 1].dx, linkPoints[i + 1].dy);
+    // }
+
+    path.relativeCubicTo(linkPoints[0].dx, linkPoints[0].dy, linkPoints[1].dx,
+        linkPoints[1].dy, linkPoints[2].dx, linkPoints[2].dy);
+
+    for (int i = 2; i < linkPoints.length; i++) {
+      path.lineTo(linkPoints[i].dx, linkPoints[i].dy);
+    }
     canvas.drawPath(path, paint);
 
     // for (int i = 0; i < linkPoints.length - 1; i++) {
