@@ -44,6 +44,7 @@ class LinkPainter extends CustomPainter {
           linkPoints[i + 1].dy,
           linkPoints[i + 2].dx,
           linkPoints[i + 2].dy);
+      path.moveTo(linkPoints[i + 1].dx, linkPoints[i + 1].dy);
     }
 
     canvas.drawPath(path, paint);
