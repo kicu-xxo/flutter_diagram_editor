@@ -24,31 +24,27 @@ class LinkPainter extends CustomPainter {
     Path path = Path();
 
     if (linkPoints.length == 2) {
-      //     // 직선
-      // canvas.drawPath(
-      //   linkStyle.getLinePath(
-      //     VectorUtils.getShorterLineStart(
-      //       linkPoints[0],
-      //       linkPoints[1],
-      //       scale * linkStyle.getEndShortening(linkStyle.backArrowType),
-      //     ),
-      //     VectorUtils.getShorterLineEnd(
-      //       linkPoints[0],
-      //       linkPoints[1],
-      //       scale * linkStyle.getEndShortening(linkStyle.arrowType),
-      //     ),
-      //     scale,
-      //   ),
-      //   paint,
-      // );
-      path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
-      path.conicTo(linkPoints[0].dx, linkPoints[0].dy, linkPoints[1].dx,
-          linkPoints[1].dy, 2);
-      canvas.drawPath(path, paint);
+      // 직선
+      canvas.drawPath(
+        linkStyle.getLinePath(
+          VectorUtils.getShorterLineStart(
+            linkPoints[0],
+            linkPoints[1],
+            scale * linkStyle.getEndShortening(linkStyle.backArrowType),
+          ),
+          VectorUtils.getShorterLineEnd(
+            linkPoints[0],
+            linkPoints[1],
+            scale * linkStyle.getEndShortening(linkStyle.arrowType),
+          ),
+          scale,
+        ),
+        paint,
+      );
     } else {
       path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
-      path.conicTo(linkPoints[0].dx, linkPoints[0].dy, linkPoints[2].dx,
-          linkPoints[2].dy, 2);
+      path.conicTo(linkPoints[1].dx, linkPoints[1].dy, linkPoints[2].dx,
+          linkPoints[2].dy, 1);
 
       // for (int i = 0; i < linkPoints.length; i++) {
       //   path.conicTo(linkPoints[i].dx, linkPoints[i].dy, linkPoints[i + 1].dx,
