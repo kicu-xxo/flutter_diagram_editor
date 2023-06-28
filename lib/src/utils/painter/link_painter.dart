@@ -49,7 +49,7 @@ class LinkPainter extends CustomPainter {
       for (int i = 1; i < linkPoints.length; i++) {
         path.conicTo(linkPoints[i].dx, linkPoints[i].dy, linkPoints[i + 1].dx,
             linkPoints[i + 1].dy, 1);
-        path.moveTo(linkPoints[i].dx, linkPoints[i].dy);
+        // path.moveTo(linkPoints[i].dx, linkPoints[i].dy);
       }
 
       // for (int i = 1; i < linkPoints.length; i++) {
