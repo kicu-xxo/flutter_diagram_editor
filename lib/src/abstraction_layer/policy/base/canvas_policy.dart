@@ -1,5 +1,6 @@
 import 'package:diagram_editor/src/abstraction_layer/policy/base_policy_set.dart';
 import 'package:diagram_editor/src/getX/link_align_controller.dart';
+import 'package:diagram_editor/src/getX/link_curved_controller.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -38,5 +39,13 @@ mixin CanvasPolicy on BasePolicySet {
 
   getIsAlignVertically() {
     return Get.find<LinkAlignController>().isAlignVertically;
+  }
+
+  changeIsCurved(bool newIsCurved) {
+    Get.find<LinkCurvedController>().isCurved = newIsCurved;
+  }
+
+  getIsCurved() {
+    return Get.find<LinkCurvedController>().isCurved;
   }
 }
