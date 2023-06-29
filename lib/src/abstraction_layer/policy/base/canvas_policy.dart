@@ -36,19 +36,7 @@ mixin CanvasPolicy on BasePolicySet {
     Get.put(LinkAlignController());
   }
 
-  changeIsAlignHorizontallyState(bool state) {
-    Get.find<LinkAlignController>().changeIsAlignHorizontally(state);
-  }
-
-  changeIsLineOption(String state) {
-    Get.find<LinkAlignController>().changeIsLineOption(state);
-  }
-
   getIsAlignVertically() {
     return Get.find<LinkAlignController>().isAlignVertically;
-  }
-
-  getIsStraightLine() {
-    return Get.find<LinkAlignController>().isLineOption;
   }
 }
