@@ -41,6 +41,10 @@ mixin CanvasPolicy on BasePolicySet {
     return Get.find<LinkAlignController>().isAlignVertically;
   }
 
+  getPutLinkCurvedController() {
+    Get.put(LinkCurvedController());
+  }
+
   changeIsCurved(bool newIsCurved) {
     Get.find<LinkCurvedController>().isCurved = newIsCurved;
   }
