@@ -46,7 +46,7 @@ mixin CanvasPolicy on BasePolicySet {
   }
 
   changeIsCurved(bool newIsCurved) {
-    Get.find<LinkCurvedController>().isCurved = newIsCurved;
+    Get.find<LinkCurvedController>().changeIsCurved(newIsCurved);
   }
 
   getIsCurved() {
