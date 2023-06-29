@@ -54,8 +54,8 @@ class LinkStyle {
     this.backArrowType = ArrowType.none,
     this.arrowSize = 5,
     this.backArrowSize = 5,
-    this.lineWidth = 0.5,
-    this.color = const Color.fromRGBO(29, 177, 186, 1),
+    this.lineWidth = 0.3,
+    this.color = const Color.fromRGBO(29, 177, 186, 0.7),
   })  : assert(lineWidth > 0),
         assert(arrowSize > 0);
 
