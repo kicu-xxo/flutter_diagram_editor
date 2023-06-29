@@ -40,8 +40,8 @@ mixin CanvasPolicy on BasePolicySet {
     Get.find<LinkAlignController>().changeIsAlignHorizontally(state);
   }
 
-  changeIsStraightLineState() {
-    Get.find<LinkAlignController>().changeIsStraightLine();
+  changeIsLineOption(String state) {
+    Get.find<LinkAlignController>().changeIsLineOption(state);
   }
 
   getIsAlignVertically() {
@@ -49,6 +49,6 @@ mixin CanvasPolicy on BasePolicySet {
   }
 
   getIsStraightLine() {
-    return Get.find<LinkAlignController>().isStraightLine;
+    return Get.find<LinkAlignController>().isLineOption;
   }
 }

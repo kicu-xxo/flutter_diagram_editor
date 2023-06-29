@@ -2,15 +2,15 @@ import 'package:get/get.dart';
 
 class LinkAlignController extends GetxController {
   bool isAlignVertically = true;
-  bool isStraightLine = false;
+  String isLineOption = "straight";
 
   void changeIsAlignHorizontally(bool state) {
     isAlignVertically = state;
     update();
   }
 
-  void changeIsStraightLine() {
-    isStraightLine = !isStraightLine;
+  void changeIsLineOption(String state) {
+    isLineOption = state;
     update();
   }
 }
