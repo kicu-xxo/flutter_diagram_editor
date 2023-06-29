@@ -66,20 +66,16 @@ class LinkPainter extends CustomPainter {
         canvas.drawPath(path, paint);
       }
     }
-// -------------- 반만 곡선--------------------
+    // ----------------------- 반만 곡선------------------------
     // path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
-
     // path.quadraticBezierTo(
     //     linkPoints[1].dx, linkPoints[1].dy, linkPoints[2].dx, linkPoints[2].dy);
-
     // path.lineTo(linkPoints[3].dx, linkPoints[3].dy);
-
     // for (int i = 4; i < linkPoints.length; i++) {
     //   path.lineTo(linkPoints[i].dx, linkPoints[i].dy);
     // }
 
-    // ------------------------- 원본 -------------------------
-
+    // ------------------------- 원본 --------------------------
     // for (int i = 0; i < linkPoints.length - 1; i++) {
     //   if (linkPoints.length == 2) {
     //     // 직선
