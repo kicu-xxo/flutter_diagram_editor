@@ -1,11 +1,11 @@
-import 'package:diagram_editor/src/utils/link_style.dart';
-import 'package:diagram_editor/src/utils/vector_utils.dart';
+import 'package:diagram_editor/diagram_editor.dart';
 import 'package:flutter/material.dart';
 
 class LinkPainter extends CustomPainter {
   final List<Offset> linkPoints;
   final double scale;
   final LinkStyle linkStyle;
+  PolicySet policySet = PolicySet();
 
   LinkPainter({
     required this.linkPoints,
@@ -20,7 +20,7 @@ class LinkPainter extends CustomPainter {
       ..strokeWidth = linkStyle.lineWidth * scale
       ..style = PaintingStyle.stroke;
 
-// ---------------------------------- 곡선일뻔한 부분
+// ---------------------------------- 곡선부분
     Path path = Path();
 
     if (linkPoints.length == 2) {
@@ -42,25 +42,28 @@ class LinkPainter extends CustomPainter {
         paint,
       );
     } else {
-      path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
+      if (policySet.getIsCurved()) {
+        path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
 
-      path.conicTo(
-          linkPoints[1].dx,
-          linkPoints[1].dy,
-          (linkPoints[0].dx + linkPoints[3].dx) / 2,
-          (linkPoints[0].dy + linkPoints[3].dy) / 2,
-          1);
+        path.conicTo(
+            linkPoints[1].dx,
+            linkPoints[1].dy,
+            (linkPoints[0].dx + linkPoints[3].dx) / 2,
+            (linkPoints[0].dy + linkPoints[3].dy) / 2,
+            1);
 
-      path.moveTo((linkPoints[0].dx + linkPoints[3].dx) / 2,
-          (linkPoints[0].dy + linkPoints[3].dy) / 2);
+        path.moveTo((linkPoints[0].dx + linkPoints[3].dx) / 2,
+            (linkPoints[0].dy + linkPoints[3].dy) / 2);
 
-      path.conicTo(linkPoints[2].dx, linkPoints[2].dy, linkPoints[3].dx,
-          linkPoints[3].dy, 1);
-
-      // for (int i = 1; i < linkPoints.length; i++) {
-      //   path.lineTo(linkPoints[i].dx, linkPoints[i].dy);
-      // }
-      canvas.drawPath(path, paint);
+        path.conicTo(linkPoints[2].dx, linkPoints[2].dy, linkPoints[3].dx,
+            linkPoints[3].dy, 1);
+        canvas.drawPath(path, paint);
+      } else if (!policySet.getIsCurved()) {
+        for (int i = 0; i < linkPoints.length; i++) {
+          path.lineTo(linkPoints[i].dx, linkPoints[i].dy);
+        }
+        canvas.drawPath(path, paint);
+      }
     }
 // -------------- 반만 곡선--------------------
     // path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
