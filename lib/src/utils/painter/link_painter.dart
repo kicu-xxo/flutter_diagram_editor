@@ -42,6 +42,7 @@ class LinkPainter extends CustomPainter {
         paint,
       );
     } else {
+      // IsCurved가 ture인 경우 연결점을 곡선으로 그림
       if (policySet.getIsCurved()) {
         path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
 
@@ -57,8 +58,14 @@ class LinkPainter extends CustomPainter {
 
         path.conicTo(linkPoints[2].dx, linkPoints[2].dy, linkPoints[3].dx,
             linkPoints[3].dy, 1);
+
+        for (int i = 3; i < linkPoints.length; i++) {
+          path.lineTo(linkPoints[i].dx, linkPoints[i].dy);
+        }
+
         canvas.drawPath(path, paint);
       } else if (!policySet.getIsCurved()) {
+        // isCurved가 false인 경우 연결점을 직선으로 그림
         path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
         for (int i = 0; i < linkPoints.length; i++) {
           path.lineTo(linkPoints[i].dx, linkPoints[i].dy);

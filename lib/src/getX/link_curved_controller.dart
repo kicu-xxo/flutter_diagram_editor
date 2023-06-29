@@ -5,6 +5,5 @@ class LinkCurvedController extends GetxController {
 
   changeIsCurved(bool newIsCurved) {
     isCurved = newIsCurved;
-    print(isCurved);
   }
 }
