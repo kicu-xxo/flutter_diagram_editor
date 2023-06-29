@@ -59,6 +59,7 @@ class LinkPainter extends CustomPainter {
             linkPoints[3].dy, 1);
         canvas.drawPath(path, paint);
       } else if (!policySet.getIsCurved()) {
+        path.moveTo(linkPoints[0].dx, linkPoints[0].dy);
         for (int i = 0; i < linkPoints.length; i++) {
           path.lineTo(linkPoints[i].dx, linkPoints[i].dy);
         }
@@ -77,7 +78,7 @@ class LinkPainter extends CustomPainter {
     //   path.lineTo(linkPoints[i].dx, linkPoints[i].dy);
     // }
 
-    // --------------------------------------------------
+    // ------------------------- 원본 -------------------------
 
     // for (int i = 0; i < linkPoints.length - 1; i++) {
     //   if (linkPoints.length == 2) {
