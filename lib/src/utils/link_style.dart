@@ -47,15 +47,14 @@ class LinkStyle {
   Color color;
 
   /// Defines a visual design of a link on the canvas.
-  /// 라인 색상, 넓이 변경
   LinkStyle({
     this.lineType = LineType.solid,
     this.arrowType = ArrowType.none,
     this.backArrowType = ArrowType.none,
     this.arrowSize = 5,
     this.backArrowSize = 5,
-    this.lineWidth = 0.1,
-    this.color = const Color.fromRGBO(29, 177, 186, 0.7),
+    this.lineWidth = 1,
+    this.color = Colors.black,
   })  : assert(lineWidth > 0),
         assert(arrowSize > 0);
 
