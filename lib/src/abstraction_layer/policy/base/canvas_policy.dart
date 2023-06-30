@@ -37,6 +37,10 @@ mixin CanvasPolicy on BasePolicySet {
     Get.put(LinkAlignController());
   }
 
+  changeIsAlignVertically(newIsAlignVertically) {
+    Get.find<LinkAlignController>().isAlignVertically = newIsAlignVertically;
+  }
+
   getIsAlignVertically() {
     return Get.find<LinkAlignController>().isAlignVertically;
   }
