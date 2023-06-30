@@ -150,6 +150,8 @@ class CanvasModel with ChangeNotifier {
     // var xPosition = (sourcePoint.dx - targetPoint.dx).abs();
     // var yPosition = (sourcePoint.dy - targetPoint.dy).abs();
 
+    print(Get.find<LinkAlignController>().isAlignVertically);
+
     Offset midPoint1 = Get.find<LinkAlignController>().isAlignVertically
         ? Offset(sourcePoint.dx, (sourcePoint.dy + targetPoint.dy) / 2)
         : Offset((sourcePoint.dx + targetPoint.dx) / 2, sourcePoint.dy);
