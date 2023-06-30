@@ -147,16 +147,16 @@ class CanvasModel with ChangeNotifier {
     var targetPoint = linkPoints[3];
 
 // 시작점과 끝 점 x, y좌표의 떨어진 거리
-    var xPosition = (sourcePoint.dx - targetPoint.dx).abs();
-    var yPosition = (sourcePoint.dy - targetPoint.dy).abs();
+    // var xPosition = (sourcePoint.dx - targetPoint.dx).abs();
+    // var yPosition = (sourcePoint.dy - targetPoint.dy).abs();
 
-    Offset midPoint1 = xPosition < yPosition
+    Offset midPoint1 = Get.find<LinkAlignController>().isAlignVertically
         ? Offset(sourcePoint.dx, (sourcePoint.dy + targetPoint.dy) / 2)
         : Offset((sourcePoint.dx + targetPoint.dx) / 2, sourcePoint.dy);
 
-    Offset midPoint2 = xPosition < yPosition
-        ? Offset(targetPoint.dx, (sourcePoint.dy + targetPoint.dy) / 2)
-        : Offset((sourcePoint.dx + targetPoint.dx) / 2, targetPoint.dy);
+    Offset midPoint2 = Get.find<LinkAlignController>().isAlignVertically
+        ? Offset((sourcePoint.dx + targetPoint.dx) / 2, targetPoint.dy)
+        : Offset(targetPoint.dx, (sourcePoint.dy + targetPoint.dy) / 2);
 
 // 새롭게 구한 midPoint값 적용
     linkPoints[1] = midPoint1;
