@@ -155,8 +155,8 @@ class CanvasModel with ChangeNotifier {
         : Offset((sourcePoint.dx + targetPoint.dx) / 2, sourcePoint.dy);
 
     Offset midPoint2 = Get.find<LinkAlignController>().isAlignVertically
-        ? Offset((sourcePoint.dx + targetPoint.dx) / 2, targetPoint.dy)
-        : Offset(targetPoint.dx, (sourcePoint.dy + targetPoint.dy) / 2);
+        ? Offset(targetPoint.dx, (sourcePoint.dy + targetPoint.dy) / 2)
+        : Offset((sourcePoint.dx + targetPoint.dx) / 2, targetPoint.dy);
 
 // 새롭게 구한 midPoint값 적용
     linkPoints[1] = midPoint1;
